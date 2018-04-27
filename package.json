@@ -1,0 +1,28 @@
+{
+  "name": "hct-discord-bot",
+  "version": "0.0.1",
+  "description": "HCT bot for Discord",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "engines": {
+    "node": "8.0.0"
+  },
+  "keywords": [
+    "HCT",
+    "bot",
+    "Discord"
+  ],
+  "author": "Ti-Tom",
+  "license": "Beerware",
+  "dependencies": {
+    "discord.io": "github:woor/discord.io#gateway_v6",
+    "discord.js": "^11.3.2",
+    "erlpack": "github:discordapp/erlpack",
+    "request": "^2.85.0",
+    "uws": "^9.147.0",
+    "winston": "^2.4.1"
+  }
+}
