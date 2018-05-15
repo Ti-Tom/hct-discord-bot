@@ -18,11 +18,8 @@
   "author": "Ti-Tom",
   "license": "Beerware",
   "dependencies": {
-    "discord.io": "github:woor/discord.io#gateway_v6",
     "discord.js": "^11.3.2",
-    "erlpack": "github:discordapp/erlpack",
-    "request": "^2.85.0",
-    "uws": "^9.147.0",
+    "request": "^2.86.0",
     "winston": "^2.4.1"
   }
 }

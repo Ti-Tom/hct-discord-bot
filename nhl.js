@@ -20,6 +20,9 @@ var main = function(command, options, fct) {
 		case 'people':
 			query = 'people/'+options;
 			break;
+		case 'schedule':
+			query = 'schedule';
+			break;
 		default:
 		case 'help':
 			return;
@@ -60,6 +63,19 @@ var main = function(command, options, fct) {
 						results.push('Primary Position: '+json.people[t].primaryPosition.name+' / '+json.people[t].primaryPosition.type);
 					}
 					break;
+				case 'schedule':
+					if (json.totalGames) {
+						for (var d in json.dates) {
+							results.push('Game '+json.dates[d].date+':');
+							for (var t in json.dates[d].games) {
+								results.push('- '+json.dates[d].games[t].teams.home.team.name+' ('+json.dates[d].games[t].teams.home.team.id+') vs '+json.dates[d].games[t].teams.away.team.name+' ('+json.dates[d].games[t].teams.away.team.id+') at '+json.dates[d].games[t].venue.name+' - '+json.dates[d].games[t].gamePk);
+							}
+						}
+					}else{
+						results.push('No game today');
+					}
+					break;
+				// https://statsapi.web.nhl.com/api/v1/game/2017030231/feed/live
 			}
 			fct(results);
 		});
