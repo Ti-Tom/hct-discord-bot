@@ -1,10 +1,9 @@
 const request = require("request");
-var logger = require('winston');
 
 const url = 'https://statsapi.web.nhl.com/api/v1/';
 
 var main = function(command, options, fct) {
-	logger.info(command+" - "+options)
+	var results = [];
 	var query = '';
 	switch(command) {
 		case 'teams':
@@ -25,13 +24,20 @@ var main = function(command, options, fct) {
 			break;
 		default:
 		case 'help':
-			return;
+			results = [
+				'!nhl <command>',
+				' - teams: list all teams',
+				' - teams <id team>: team informations',
+				' - roster <id team>: team roster',
+				' - people <id player>: people info (alias player)',
+				' - schedule: list games of the day',
+				' - help: display this message'
+			];
 			break;
 	}
 
 	if(query !== ''){
 		var res =  request.get(url+query, (error, response, body) => {
-			var results = [];
 			let json = JSON.parse(body);
 			switch(command) {
 				case 'teams':
@@ -77,9 +83,9 @@ var main = function(command, options, fct) {
 					break;
 				// https://statsapi.web.nhl.com/api/v1/game/2017030231/feed/live
 			}
-			fct(results);
 		});
 	}
+	fct(results);
 	return;
 }
 
